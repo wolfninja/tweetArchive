@@ -10,3 +10,9 @@ const (
 	TwitterAccessToken    = "twitter.access.token"
 	TwitterAccessSecret   = "twitter.access.secret"
 )
+
+var (
+	CouchbaseRequired = []string{CouchbaseBucket, CouchbasePassword, CouchbaseURL}
+	TwitterRequired   = []string{TwitterAccessSecret, TwitterAccessToken, TwitterConsumerKey, TwitterConsumerSecret}
+	AllRequired       = append(TwitterRequired, CouchbaseRequired...)
+)

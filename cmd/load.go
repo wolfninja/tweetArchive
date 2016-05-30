@@ -66,14 +66,10 @@ func Load(cmd *cobra.Command, args []string) error {
 	if len(args) != 1 {
 		return errors.New("twitter username needs to be provided")
 	}
-	if !viper.IsSet(configs.CouchbaseURL) {
-		return errors.New("couchbase.url must be provided")
-	}
-	if !viper.IsSet(configs.CouchbaseBucket) {
-		return errors.New("couchbase.bucket must be provided")
-	}
-	if !viper.IsSet(configs.CouchbasePassword) {
-		return errors.New("couchbase.password must be provided")
+	for _, config := range configs.AllRequired {
+		if !viper.IsSet(config) {
+			return errors.New(config + " must be provided")
+		}
 	}
 
 	userName := args[0]

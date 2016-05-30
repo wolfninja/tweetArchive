@@ -44,7 +44,7 @@ func DoN1qlQuery(bucket *gocb.Bucket, query string, params []interface{}) (*uint
 		if val == "" {
 			return nil, nil
 		}
-		i64, _ := strconv.ParseUint(string(val), 10, 64)
+		i64, _ := strconv.ParseUint(val, 10, 64)
 		return &i64, nil
 	}
 	return nil, nil

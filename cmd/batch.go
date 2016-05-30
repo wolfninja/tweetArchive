@@ -57,25 +57,19 @@ func doBatch(handles []string) error {
 	for _, handle := range handles {
 		fmt.Printf("Loading tweets for %s\n", handle)
 		count, err := helpers.LoadAndStoreTweets(bucket, api, handle)
-		if err == nil {
-			fmt.Printf("Loaded %d tweets for %s\n", *count, handle)
+		if err != nil {
+			return err
 		}
+		fmt.Printf("Loaded %d tweets for %s\n", *count, handle)
 	}
-	return err
+	return nil
 }
 
 func Batch(cmd *cobra.Command, args []string) error {
-	if !viper.IsSet(configs.CouchbaseURL) {
-		return errors.New("couchbase.url must be provided")
-	}
-	if !viper.IsSet(configs.CouchbaseBucket) {
-		return errors.New("couchbase.bucket must be provided")
-	}
-	if !viper.IsSet(configs.CouchbasePassword) {
-		return errors.New("couchbase.password must be provided")
-	}
-	if !viper.IsSet(configs.CouchbaseURL) {
-		return errors.New("couchbase.url must be provided")
+	for _, config := range configs.AllRequired {
+		if !viper.IsSet(config) {
+			return errors.New(config + " must be provided")
+		}
 	}
 	if !viper.IsSet(configs.Handles) {
 		return errors.New("handles must be provided")
