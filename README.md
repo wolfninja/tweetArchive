@@ -37,9 +37,9 @@
     - _tweetArchive batch_ will load and persist all the tweets for the list of users configured in your yaml config in the _handles_ key
       - Can also be configured using the _HANDLES_ env variable
   - Load command
-    - _tweetArchive load <handle>_ will load and persist all the tweets for the given twitter user
+    - _tweetArchive load [handle]_ will load and persist all the tweets for the given twitter user
   - Query command
-    - _tweetArchive query <handle>_ will query and dump to stdout all the tweets for the given twitter user (one tweet per line, newlines replaced with spaces)
+    - _tweetArchive query [handle]_ will query and dump to stdout all the tweets for the given twitter user (one tweet per line, newlines replaced with spaces)
 
 ## Versioning
   - This project uses [Semantic Versioning](http://semver.org/) to make release versions predictable
