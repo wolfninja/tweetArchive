@@ -1,0 +1,16 @@
+couchbase:
+  url: couchbase://localhost
+  bucket: tweets
+  password: tweety
+twitter:
+  consumer:
+    key: <twitter consumer key> 
+    secret: <twitter consumer secret> 
+  access:
+    token: <twitter app access token> 
+    secret: <twitter app secret> 
+handles:
+  - BernieSanders
+  - GovGaryJohnson
+  - HillaryClinton
+  - RealDonaldTrump
